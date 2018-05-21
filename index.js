@@ -1,3 +1,5 @@
+module.exports = Phrase;
+
 //reverses a string
 String.prototype.reverse = function () {
 	return Array.from(this).reverse().join("");
@@ -31,11 +33,15 @@ function Phrase(content) {
 	}
 
 	this.processedContent = function processedContent() {
-		return this.processor(this.content);
+		return this.processor(this.letters());
 	}
 
 	this.louder = function louder() {
 		return this.content.toUpperCase();
+	}
+
+	this.letters = function letters() {
+		return Array.from(this.content).filter(c => c.match(/[a-z]/i)).join("");
 	}
 }
 
